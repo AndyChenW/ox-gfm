@@ -93,14 +93,8 @@ plist used as a communication channel."
                  (org-export-get-alt-title headline info) info))
          (level (1- (org-element-property :level headline)))
          (indent (concat (make-string (* level 2) ? )))
-         (anchor (or (org-element-property :custom_id headline)
-                     (concat "sec-" (mapconcat 'number-to-string
-                                               (org-export-get-headline-number
-                                                headline info) "-")))))
+	 (anchor (replace-regexp-in-string "[ ]+" "-" (downcase title))))
     (concat indent "- [" title "]" "(#" anchor ")")))
-
-
-
 
 ;;;; Template
 
